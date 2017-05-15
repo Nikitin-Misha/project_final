@@ -23,7 +23,7 @@ public class Main {
     private static ArrayList<Point> points = new ArrayList<Point>();
     static int Max1 = 0;
     static int Max2 = 0;
-    private static ArrayList<com.bot.Line>  lines;
+    private static ArrayList<com.bot.Line> lines;
     static double max = 0;
 
     public static void createGUI() throws FileNotFoundException {
