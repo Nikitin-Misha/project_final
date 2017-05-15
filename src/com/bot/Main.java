@@ -99,15 +99,15 @@ public class Main {
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (int i = 0; i < points.size(); i++) {
-                    while (points.size() > 0) {
-                        int index = points.size() - 1;
-                        Point point = points.remove(index);
-                        pointpane.remove(point);
-                        pointpane.repaint();
-                        pointpane.revalidate();
-                    }
+
+                while (points.size() > 0) {
+                    int index = points.size() - 1;
+                    Point point = points.remove(index);
+                    pointpane.remove(point);
+                    pointpane.repaint();
+                    pointpane.revalidate();
                 }
+
                 for (
                         int i = 0; i < lines.size(); i++) {
                     while (lines.size() > 0) {
@@ -134,20 +134,23 @@ public class Main {
                                       @Override
                                       public void actionPerformed(ActionEvent e) {
                                           for (int i = 0; i < points.size(); i++) {
-                                              for (int j = i + 1; j < points.size(); j++) {//просчитываем всевозможные вариации с точками
-                                                  double d = Point.Distanse(points.get(i), points.get(j));
-                                                  if (max < d) {
-                                                      max = d;//если нашли больше, то новый max
-                                                      Max1 = i;
-                                                      Max2 = j;
-                                                  }
+                                              for (int j = i+1; j < points.size(); j++) {//просчитываем всевозможные вариации с точками
+
+                                                      double d = Point.Distanse(points.get(i), points.get(j));
+                                                      if (max < d) {
+                                                          max = d;//если нашли больше, то новый max
+                                                          Max1 = i;
+                                                          Max2 = j;
+                                                      }
+
                                               }
                                           }
                                           //System.out.println(max);//вывод max
-
+                                          System.out.print(points.get(Max1).x + " " + points.get(Max1).y + " " + points.get(Max2).x + " " + points.get(Max2).y );
                                           com.bot.Line l = new com.bot.Line(points.get(Max1), points.get(Max2));
                                           lines.add(l);
-                                          l.setBounds(Max1, Max2, frame.getWidth(), frame.getHeight());
+                                          //l.setBounds(Max1, Max2, frame.getWidth(), frame.getHeight());
+                                          l.setBounds(2, 2, frame.getWidth(), frame.getHeight());
                                           pointpane.add(l);
                                           pointpane.revalidate();
                                           pointpane.repaint();
